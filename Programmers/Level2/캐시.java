@@ -2,11 +2,15 @@ import java.util.*;
 
 class Solution {
     public int solution(int cacheSize, String[] cities) {
-        int answer = 0;
+        int answer = 5;
         //queue 를 이용하자
         //queue 에서는 특정값 제거하는 것이 번거롭다 > queue remove 를 사용하자
         Queue<String> cache = new LinkedList<>();
-    
+        //대소문자를 구분하지 않기 위해 모두 소문자로 변경
+        for(int i = 0; i < cities.length; i++) {
+            cities[i] = cities[i].toLowerCase();
+        }
+        
         //cahce 가 0일 경우
         if (cacheSize == 0) {
             answer = 5 * cities.length;
@@ -14,12 +18,14 @@ class Solution {
         }
         
         else {
-            for (int i = 0; i < cities.length; i++) {
-                //대소문자를 구분하지 않기 위해 모두 소문자로 변경
-                cities[i] = cities[i].toLowerCase();
-
+            //첫번째 값 cache에 넣기
+            cache.add(cities[0]);
+            
+            for (int i = 1; i < cities.length; i++) {
                 if(cache.size() < cacheSize) {
                     if(cache.contains(cities[i])) {
+                        cache.poll();
+                        cache.add(cities[i]);
                         answer += 1;
                         continue;
                     }
