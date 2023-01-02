@@ -27,6 +27,7 @@ public class _7576 {
         n = sc.nextInt();
 
         storage = new int[n][m];
+        queue = new LinkedList<>();
 
         for(int i = 0; i < n; i++) {
             for(int j=0; j< m; j++) {
