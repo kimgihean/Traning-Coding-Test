@@ -42,6 +42,7 @@ public class _7576 {
             System.out.println();
         }*/
         int answer = Solution();
+        System.out.println(answer);
     }
 
     public static int Solution() {
