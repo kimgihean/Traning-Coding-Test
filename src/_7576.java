@@ -35,17 +35,13 @@ public class _7576 {
                 if(storage[i][j] == 1) queue.add(new tomato(i, j));
             }
         }
-        /*for(int i = 0; i<n; i++) {
-            for(int j = 0 ; j < m; j++) {
-                System.out.print(storage[i][j] + " ");
-            }
-            System.out.println();
-        }*/
+
         int answer = Solution();
         System.out.println(answer);
     }
 
     public static int Solution() {
+
         while(!queue.isEmpty()) {
             tomato tomato = queue.poll();
             int x = tomato.x;
@@ -58,7 +54,7 @@ public class _7576 {
                 if(nx >= 0 && ny >= 0 && nx < n && ny < m) {
                     if(storage[nx][ny] == 0) {
                         queue.add(new tomato(nx, ny));
-                        storage[nx][ny] += 1;
+                        storage[nx][ny] = storage[x][y] + 1;
                     }
                 }
             }
@@ -73,6 +69,11 @@ public class _7576 {
             }
         }
 
-        return result;
+        if (result == 1) {
+            return 0;
+        }
+        else {
+            return result -1;
+        }
     }
 }
