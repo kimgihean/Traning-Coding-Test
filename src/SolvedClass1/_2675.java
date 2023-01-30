@@ -12,20 +12,24 @@ public class _2675 {
     public static void main(String args[]) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
+        List<testCase> testCaseList = new ArrayList<>();
 
         int n = Integer.parseInt(bf.readLine());
 
         for(int i = 0; i < n; i++) {
             st = new StringTokenizer(bf.readLine());
+            int tmpR = Integer.parseInt(st.nextToken());
+            String tmpArr = st.nextToken();
 
-            int r = Integer.parseInt(st.nextToken());
-            String s = st.nextToken();
+            testCaseList.add(new testCase(tmpR, tmpArr));
+        }
 
-            List<Character> list = Solution(r, s);
-            for(int j = 0; j < list.size(); j++) {
-                System.out.print(list.get(i));
+        for(int i = 0; i < testCaseList.size(); i++) {
+            testCase testCase = testCaseList.get(i);
+            List<Character> solution = Solution(testCase.r, testCase.arr);
+            for(int j=0 ; j < solution.size(); j++) {
+                System.out.print(solution.get(j));
             }
-
             System.out.println();
         }
     }
@@ -40,5 +44,15 @@ public class _2675 {
         }
 
         return p;
+    }
+}
+
+class testCase {
+    int r;
+    String arr;
+
+    public testCase(int r, String arr) {
+        this.r = r;
+        this.arr = arr;
     }
 }
